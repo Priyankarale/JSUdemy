@@ -1,0 +1,40 @@
+Imagine we have the following variable:
+let temperature = 75;
+Javascript
+The value of this variable will most likely change over time.
+Now imagine that you want to inform the user of your application if it is warm outside – let's say if the temperature is above 70.
+That's where we use our first if-statement. Run the code to see what happens.
+let temperature = 75;
+console.log(`The temperature is ${temperature}`);
+ 
+if (temperature > 70) {
+   console.log("It's warm outside");
+}
+
+
+
+let temperature = 60;
+console.log(`The temperature is ${temperature}`);
+ 
+if (temperature > 70) {
+   console.log("It's warm outside");
+}
+Since the temperature is not above 70, the log statement is not executed.
+
+But, how does it work?
+
+The if-statement executes a block of code if a certain condition is true. It consists of the if keyword followed by a condition in parentheses, and a block of code in curly braces.
+if (Condition) {
+ Block of code
+}
+
+
+if...else statement - run else
+This exercise is very similar to the previous one. But, this time we also have an else statement. An else statement is another piece of code – wrapped by curly braces – that only runs if the condition is not satisfied.
+Adjust the condition such that the code inside the else statement will be executed and the console.log() statement logs true.
+const isOnSale=false;
+if(isOnSale){
+  console.location("sale is live")
+}
+else
+console.log("sale is off today')

@@ -1,0 +1,20 @@
+In the previous sections you learnt how to create variables and assign numbers to them — like this one that indicates the price of an arbitrary product:
+const price = 10;
+But, sometimes you might want to store information that cannot be represented by a number.
+For example, the product for which we already have a price could sometimes be on sale and sometimes not.
+To store this kind of information we can use JavaScript Booleans, like so:
+const isOnSale = true;
+The value true indicates that the product is on sale.
+Booleans can have only two values: true and false
+If the product is not on sale, we assign false:
+const isOnSale = false;
+
+All of the following values are falsy:
+false
+null
+undefined
+0
+-0
+NaN
+An empty string ('')
+

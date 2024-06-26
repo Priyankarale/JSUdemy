@@ -1,0 +1,68 @@
+Variables --->are containers that store information for later use.
+   ->lets create a variable
+   -> let first_Name;
+   ->We use the let keyword to declare a variable with the name test. Declaring a variable is JavaScript slang for creating a variable.
+  ->But, what happens if we use console.log() to log our new variable?
+      ->console.log(first_Name);
+          ->It will Print undefined
+  ->This is because we have not initialized our variable. Initializing a variable is the process of assigning a value to it.
+Declaration----> of a variable in a computer programming language is a statement used to specify the variable name and its data type. Declaration tells the compiler about the existence of an entity in the program and its location. When you declare a variable, you should also initialize it.
+Initialization----> is the process of assigning a value to the Variable. Every programming language has its own method of initializing the variable. If the value is not assigned to the Variable, then the process is only called a Declaration.
+------>We can assign a value to a variable with the assignment operator =.
+        let first_Name;
+        first_Name=Priyanka;
+        console.log(first_Name);
+You can also assign a value to a variable directly when you create it
+/*Reassign a value to a variable* */
+/*let num =1;
+let num=2;
+console.log(num);*/  //here we will get an error i.e Identifier 'num' has already been declared 
+
+//we will fix it here //
+let num=1;
+num =2;
+console.log(num)   ///if we are using let keyword to declare our varible we can resign the value but we cant redecalre it
+
+*********Create variables with const*****
+
+
+We can also create variables a using const keyword;
+const num=5;
+
+
+The difference between the two is that you can not assign a new value to a variable that was created with const.
+const num=5;
+num=2;
+we will get typeError
+
+
+You also cannot declare a const-variable without assigning a value to it directly. See what happens if you try anyway:
+const test;
+SyntaxError: Missing initializer in const declaration
+
+
+  Question
+  why should you use const instead of let
+  --->It is considered good practice to use const for variables whoose value will never change.
+        For example, if you want to store the number pi you would use const to store it because pi never changes.
+        const pi = 3.14159;
+  --->Doing so can prevent your code from behaving unexpectedly.
+
+
+  Accessing a variable (1)
+
+   const num=5;
+   console.log(Num)
+   we will get ReferenceError: Num is not defined
+
+   Accessing a variable (2)
+   console.log(num);
+   const num = 5;
+
+   ReferenceError: Cannot access 'num' before initialization
+
+
+
+
+
+

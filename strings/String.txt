@@ -1,0 +1,78 @@
+We can use the typeof operator to find out the type of a value or variable. Try it out:
+console.log(typeof 1);
+const num = 1;
+console.log(typeof num);
+
+But what if we do not want to store a number but some text in a variable?
+Let's try it:
+const text = hello;
+console.log(text);
+ReferenceError: hello is not defined
+
+The browser thinks that hello is a variable.
+
+
+If we want to store text, we must enclose it in single or double quotes or in backticks.
+let text = "hello";
+console.log(text);
+text = 'hi';
+console.log(text);
+text = `bye`;
+console.log(text);
+It doesn't matter if you use single or double quotes or backticks.
+
+
+Question
+
+Connect Javascript strings (1)
+After we have learnt how to create JavaScript strings, we will now connect 2 strings together. In the code below we use the Addition (+) operator to concatenate textOne and textTwo. The console.log() statement logs the resulting string. Currently, the result would be HelloWorld.
+Change the code below so that the value of res is Hello World
+reset
+const textOne = 'Hello';
+const textTwo = 'World';
+const combined = textOne + textTwo;
+console.log(combined);
+
+Connect Javascript strings (2)
+In this scenario we use template literals to combine strings. Template literals allow you to dynamically insert a string into another string at a specific position. When using template literals you create strings with backticks (`). You can inject a JavaScript expression using ${expression} — e.g. ${1+1} which would insert 2 into the string.
+Adjust the code below such that the value of the variable word is inserted into the string of the variable sentence. Run the code to see if the complete sentence is logged.
+
+
+
+Basic String Methods
+
+JavaScript String Length
+let name="Priyanka";
+console.log(name.length);
+
+Extracting String Characters
+
+/***There are 4 methods for extracting string characters:***/
+
+The at(position) Method
+The charAt(position) Method
+The charCodeAt(position) Method
+Using property access [] like in arrays
+
+/***Extracting String Parts*****/
+There are 3 methods for extracting a part of a string:
+
+slice(start, end)
+substring(start, end)
+substr(start, length)
+
+
+
+String.prototype.includes()
+The includes() method of String values performs a case-sensitive search to determine whether a given string may be found within this string, returning true or false as appropriate.
+
+The trim() method of String values removes whitespace from both ends of this string and returns a new string, without modifying the original string.
+
+
+function myFunction(a, b) {
+  return a.indexOf(b) === -1 ? a + b : b + a
+}
+myFunction('priya','nka')
+
+
+

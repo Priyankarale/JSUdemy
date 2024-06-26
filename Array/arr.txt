@@ -1,0 +1,7 @@
+Javascript arrays allow you to store multiple values in a single variable. They are used to group related data together, and to make it easier to work with large sets of data. This lesson will show you how to create and work with arrays.
+
+JavaScript Array join() Method
+This join() method helps to join two arrays as a string. If we pass any parameter to this method it will join the array by using that parameter.
+
+Syntax
+array.join(separator)

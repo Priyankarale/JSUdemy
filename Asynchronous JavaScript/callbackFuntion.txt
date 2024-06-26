@@ -1,0 +1,144 @@
+Introduction to Callback Functions
+how callback functions are used to handle the output of asynchronous operations. We'll also see why callbacks can be problematic and how they're being replaced by modern approaches for asynchronous tasks.
+
+Remember that asynchronous programming is used to handle time-consuming tasks such as loading data from a server.
+
+
+Let's assume that the function getName in the following example loads a user name from a server. We use the setTimeout() method to simulate the time it takes to wait for a response from the server:
+function getName() {
+  let name;
+  setTimeout(function() {
+    name = 'Jane';
+  }, 500);
+  return name;
+}
+Javascript
+Now, we have a function welcomeUser that takes a username and logs a welcoming message. Let's try to take the result of our asynchronous operation to greet our user:
+function welcomeUser(username) {
+  console.log(`Welcome ${username}`);
+}
+function getName() {
+  let name;
+  setTimeout(function() {
+    name = 'Jane';
+  }, 500);
+  return name;
+}
+const result = getName();
+welcomeUser(result);
+Javascript
+Run
+Welcome undefined
+
+As you can see, the return value of our function getName is undefined. But why is that?
+The problem is that getName calls an asynchronous method that takes some time to complete. So, the username that we request is not immediately available.
+
+  To solve this problem, we use so-called callback functions. A callback function is a function that is passed as an argument to another function and is executed when that function is called.
+
+Let's refactor our example. This time, we pass the function welcomeUser as parameter to the function getName:
+function welcomeUser(username) {
+  console.log(`Welcome ${username}`);
+}
+function getName(callback) {
+  let name;
+  setTimeout(function() {
+    name = 'Jane';
+    callback(name);
+  }, 500);
+}
+getName(welcomeUser);
+
+
+Now, welcomeUser is used as a callback function inside welcomeUser and is executed once the username is available.
+
+This way we can work with the result of an asynchronous operation.
+
+In JavaScript you will often find methods or functions that accept callback functions as parameters. It is a common pattern when dealing with asynchronous operations.
+
+What will be the output?
+
+function logResult(result) {
+  console.log(result);
+}
+function multiply(a, b, callback) {
+  const result = a * b;
+  callback(result);
+}
+multiply(2, 3, logResult);
+
+
+But, the use of callback functions can also lead to problems, especially when we have to handle multiple asynchronous operations in sequence.
+
+But, the use of callback functions can also lead to problems, especially when we have to handle multiple asynchronous operations in sequence.
+For example, let's say we want to first load a user's name and then their age.
+We can achieve this using nested callback functions:
+function getName(callback) {
+  let name;
+  setTimeout(function() {
+    name = 'Jane';
+    callback(name);
+  }, 250);
+}
+function getAge(username, callback) {
+  let age;
+  setTimeout(function() {
+    age = 30;
+    callback(username, age);
+  }, 250);
+}
+getName(function(username) {
+  getAge(username, function(username, age) {
+    console.log(`Name: ${username}, Age: ${age}`);
+  });
+});
+
+In this example, we define two functions: getName(), and getAge(). Each function takes a callback function as a parameter.
+
+getName() loads the user's name from the server, and getAge() loads the user's age using the username.
+
+We then call these functions in sequence using nested callbacks. First, we call getName(), passing in a callback function that takes the username as a parameter.
+Once we have the username, we call getAge(), passing in the username and a callback function that takes the username and age as parameters.
+As you can see, the code becomes more complex and difficult to read as the number of nested callback functions increases.
+This is a common problem when using the callback pattern and is referred to as callback hell.
+Nowadays there are better ways to handle asynchronous operations. However, knowing about the difficulties of using callback functions is an important lesson because they are still used very often.
+
+
+
+Correctly use callback function
+
+Here we pass a function as argument to getValue. However, we do not use it yet. Use the callback function so that the value 5 is logged.
+
+
+ let result = 0;
+function getValue(callback) {
+   setTimeout(function() {
+      callback()
+      console.log(result);
+   }, 500);
+}
+getValue(function() {
+   result = 5;
+});
+Continue
+Correctly use callback function 
+
+
+Use a callback function to log output
+Use the multiply function as a callback function within getValue so that the final value of b is 10
+
+let a = 2;
+let b = 2;
+ 
+function multiply() {
+  b = a * b;
+  console.log(`The value of b = ${b}`);
+}
+function getValue(callback) {
+  setTimeout(function() {
+    a = 5;
+    callback()
+  }, 500);
+}
+getValue(multiply);
+
+

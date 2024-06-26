@@ -1,0 +1,96 @@
+In this lesson you will learn what Promises are and how they provide an alternative way to handle asynchronous operations.
+
+Remember that the result of a time consuming operation is not immediately available. So, we cannot access the result in a synchronous way.
+That's why in the following example, the function getData returns undefined because we do not wait for the result of setTimeout().
+function getData() {
+  let data;
+  setTimeout(function() {
+    data = 100;
+  }, 500);
+  return data;
+}
+const result = getData();
+console.log(result);
+
+
+In the previous sections we solved this problem using callback functions. But, we have also learnt that using callback functions can lead to code that is difficult to read. Especially if you have a complex programme involing multiple asynchronous tasks.
+
+Promises provide a solution to this problem. A Promise is an object representing the current state of an asynchronous operation. A Promise can have three states:
+
+
+pending: the initial state of a Promise. If a Promise is pending, it usually means that the asynchronous operation has not yet started or is still ongoing.
+fulfilled: if a Promise is fulfilled, the asynchronous operation has completed successfully.
+rejected: if a Promise is rejected, the asynchronous operation has failed. The rejected state provides a way to handle errors in asynchronous operations. This is something that traditional callback functions do not offer out of the box.
+
+Most of the time, you will work with already existing Promises. Many native JavaScript methods return Promises. But, you can also create Promises yourself.
+Here, we create a very simple Promise:
+new Promise(function(resolve, reject) {
+  resolve(10);
+})
+
+We use the Promise() constructor to create a Promise. This constructor receives a function with two parameters that we call resolve and reject.
+The parameters resolve and reject are functions that you can call to give your Promise either the state fulfilled or rejected.
+The only thing that our Promise above does is to immediately resolve the Promise with the value 10.
+
+
+Promises have a method called then() that is used to react once the state of a Promise changes.
+Let's see how this works with our example from above:
+new Promise(function(resolve, reject) {
+  console.log('Starting task...');
+  resolve(10);
+}).then(function (result) {
+  console.log('Promise fulfilled');
+  console.log(result);
+});
+
+
+output
+Starting task...
+Promise fulfilled
+10
+
+
+Here, we pass a function to then() that receives the value with which we resolve our Promise. We simply log the value.
+
+Since our Promise is resolved immediately, there was no asynchronity involved
+
+Let's use setTimeout() to introduce asynchronity:
+new Promise(function(resolve, reject) {
+  console.log('Starting task...');
+  setTimeout(function() {
+    resolve(10);
+  }, 1000);
+}).then(function (result) {
+  console.log('Promise fulfilled');
+  console.log(result);
+});
+ 
+
+ Now, the function that we pass to then() is only called after a delay of 1000 milliseconds. Because only then, we resolve the Promise.
+
+
+Similar to handling asynchronous tasks with callback functions, working with Promises does not block subsequent tasks:
+new Promise(function(resolve, reject) {
+  console.log('Starting task...');
+  setTimeout(function() {
+    resolve();
+  }, 1000);
+}).then(function () {
+  console.log('Promise fulfilled');
+});
+console.log('I am not blocked');
+ 
+new Promise(function(resolve, reject) {
+  console.log('Starting task...');
+  setTimeout(function() {
+    resolve();
+  }, 1000);
+}).then(function () {
+  console.log('Promise fulfilled');
+});
+console.log('I am not blocked');
+ 
+output
+Starting task...
+I am not blocked
+Promise fulfilled

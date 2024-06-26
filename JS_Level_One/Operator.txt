@@ -1,0 +1,38 @@
+-->We already know how to create variables and how to assign them numbers.
+-->Now, we will learn how to compare these variables and their values with each other. We can do so by using comparison operators.
+The first operator we explore is the Equal to (==) operator. It checks if two values are equal. 
+For example:2==2
+
+const priceOne=5;
+const priceTwo=10;
+console.log(priceOne==priceTwo)
+Here, we used the Equal to (==) operator to check if the values of priceOne and priceTwo are equal.
+Comparison operators always return a boolean value. In this case we got false because priceOne and priceTwo are not equal.
+
+
+The second operator we explore is the Not Equal to (!=) operator. It checks if two values are not equal. For example:
+2 !=2
+const priceOne = 5;
+const priceTwo = 10;
+console.log(priceOne != priceTwo);
+Now, we got true because priceOne and priceTwo are indeed not equal
+
+
+*****Introduction to JavaScript Comparison Operators*****
+
+
+The Greater than (>) operator checks if the left value is greater than the right value. For example:
+2 > 1 // checks if 2 is greater than 1
+
+
+The Less than (<) operator checks if the left value is less than the right value. For example:
+2 < 1 // checks if 2 is less than 1
+
+
+Similar to the operators above, there are also the Less than or equal (<=) and Greater than or equal (>=) operators. For example:
+2 <= 1 // checks if 2 is less than or equal 1
+2 >= 1 // checks if 2 is greater than or equal 1
+Comparison operators - Strict Equality
+
+
+

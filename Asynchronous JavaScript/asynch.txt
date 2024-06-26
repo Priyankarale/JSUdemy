@@ -1,0 +1,125 @@
+Asynchronous programming allows you to move a specific task to the background. While you wait for this task to finish, the main program continues to run.
+
+JavaScript is a single-threaded language. A thread is like a virtual machine that is able to execute code independently of other threads within the same process.
+Think of a single-lane road. 
+Only one car can travel on it at a time.
+That's not a problem as long as all cars keep moving at the same speed. But, if one car stops, the entire road is blocked until that car can start moving again.
+Similarly, the execution of JavaScript could be blocked by a slow or time-consuming piece of code.
+Since JavaScript has only one thread, it can execute only one piece of code at a time.
+These pieces of code are executed one after the other in the order in which they are called. For example:
+console.log(1);
+console.log(2);
+console.log(3);
+
+The same is true for the following code snippet:
+function logMsg(a) {
+ console.log(a);
+}
+console.log(1);
+console.log(2);
+logMsg(3);
+1
+2
+3
+Console
+ 
+Although we declare the function logMsg at the beginning of the code snippet, we only call it at the end. Therefore, the console.log() statement within the function won't be executed until then.
+This way of executing code in order from start to finish is called synchronous programming.
+
+
+This way of executing code in order from start to finish is called synchronous programming.
+
+In JavaScript we often have tasks that take some time to complete. For example, sometimes we have to make a request to a backend API to get data.
+
+In this case, the request must first arrive at the backend server. Then the server has to collect the requested data and send it back. From a programming point of view, this is a lot of time.
+
+
+  If we were to use synchronous programming for this request, our programme would have to wait until the request was completed before it could execute any other code. In other words, our program would freeze in the meantime.
+
+
+Let's simulate a time-consuming task with a pause function that simply does nothing for 3 seconds. For now, don't worry about the code within the pause function:
+
+function pause() {
+  const start = new Date().getTime();
+  while (new Date().getTime() - start < 3000);
+  console.log('Hello!');
+}
+ 
+pause();
+console.log('Another log message.');
+
+
+Did you realize that nothing happened for 3 seconds before the two log messages appeared?
+
+During these 3 seconds, the entire website was unresponsive. If you were to click on any button on the website, nothing would happen until the pause function was done executing.
+
+The reason is that JavaScript was busy executing a while-loop for 3 seconds
+
+Blocking the entire website just to wait 3 seconds before logging a message is very inefficient. During these 3 seconds, you could run other tasks.
+
+That's where asynchronous programming comes into play. Let's see what happens if you run this code:
+function func() {
+ console.log('Hello!');
+}
+setTimeout(func, 3000);
+console.log('Another log message.');
+Javascript
+Run
+Another log message.
+Hello!
+
+Again, the message Hello was logged after 3 seconds. But in the meantime, the website was still responsive and could perform other tasks. That's why the console.log() statement at the end of the code snippet was executed before the one in the function func.
+
+The order of execution has changed because we introduced the asynchronous method setTimeout().
+
+
+The setTimeout() method is a built-in function in JavaScript that allows you to execute a function after a specified amount of time has passed.
+The method requires 2 arguments. The first argument is the function that you want to execute after the delay. In the example above it's the function func. The second argument is the delay time in milliseconds.
+
+What makes this method asynchronous is that during the delay time, execution of other tasks is not blocked. That's why code lines that come after the setTimeout() method are executed before the delay is completed.
+
+
+What will be the output?
+function logMsg(a) {
+ console.log(a);
+}
+console.log(1);
+logMsg(2);
+
+
+What will be the output?
+function func() {
+ console.log(1);
+}
+setTimeout(func, 100);
+console.log(2);
+Javascript
+
+1,2
+Console
+
+2,1
+
+What will be the output?
+let i = 0;
+setTimeout(function() {
+  i = 1;
+}, 100);
+console.log(i);
+
+One final note about setTimeout(): You can call setTimeout() without a delay argument or with a delay of 0. However, the function that you pass to setTimeout() will still be moved to the end of the so-called execution queue.
+
+
+For example, here one could assume that both log outputs would be 2 because the delay is explicity set to 0. Instead, the execution of func is moved to the end of the queue:
+let i = 0;
+function func() {
+ i = 2;
+ console.log(i);
+}
+setTimeout(func, 0);
+console.log(i);
+Javascript
+Run
+0
+2
+

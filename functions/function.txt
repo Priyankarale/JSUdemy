@@ -1,0 +1,52 @@
+Javascript functions allow developers to reuse code and break up complex tasks into smaller pieces. In this lesson you will learn how to create and use simple functions.
+
+function logMessage() {
+  console.log('Hello world!');
+}
+ 
+logMessage();
+
+
+Here, we created a function named logMessage that simply logs the message Hello world!. Then, we called the function. Let's take a look at how this works.
+
+To create a function, we write the keyword function, followed by the name of the function and a pair of parentheses. Then follows some JavaScript code enclosed in curly braces.
+
+
+This is called a function declaration.
+After we have declared a function, we can call it by using its name and a pair of parentheses:
+logMessage()
+
+
+When you call a function, the code inside the function's body is executed (the part inside the curly braces).
+
+
+
+---->There's another way to create functions which is called function expression. Here, we create a function and assign it to the variable logMessage. Notice that we omit the name of the function after the function keyword.
+const logMessage = function() {
+  console.log('Hello world!');
+}
+
+
+----->One more thing that you should know about functions is that they return values. You can return a value by using the return keyword.
+function func() {
+  return 5;
+}
+ 
+const result = func();
+ 
+console.log(result);
+ 
+****If you do not specify a return value, the function will return the value undefined**  
+
+
+
+--->Note that the execution of a function stops immediately when it reaches a return statement. All code after the return statement is ignored.
+function func() {
+  return 5;
+  console.log("I will not be logged.");
+}
+ 
+const result = func();
+ 
+console.log(result);
+ 
