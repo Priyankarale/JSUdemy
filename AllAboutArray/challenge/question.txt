@@ -1,0 +1,28 @@
+Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners
+about their dog's age, and stored the data into an array (one array for each). For
+now, they are just interested in knowing whether a dog is an adult or a puppy.
+A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years
+old
+
+const Julia=[owners1:{age,adult or puppy},owners2,owner3,owner4,owner5]
+const Kate=[owners1,owners2,owner3,owner4,owner5]
+
+condition dog.age >=3 :"adult":"puppy"
+
+
+1.Task:create a function 'checkDogs' 
+
+checkDogs (arr1,arr2){
+
+}
+
+
+
+ [3, 5, 2, 12, 7], 1,2,3,4,5   Julia {1,4,5}=>modify shallow copy =>remove this 3 elements
+
+
+ 2.Create an array with both Julia's (corrected) and Kate's data
+
+
+ 3.For each remaining dog, log to the console whether it's an adult ("Dog number 1
+is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy")
